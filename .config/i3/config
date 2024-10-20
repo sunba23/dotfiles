@@ -203,33 +203,56 @@ bindsym $mod+r mode "resize"
 #	i3bar_command i3bar -t
 # }
 
-# class                 border  backgr. text    indicator child_border
-# client.focused          #4c7899 #285577 #ffffff #4c7899   #285577
-# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-# client.urgent           #2f343a #900000 #ffffff #900000   #900000
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-# client.background       #ffffff
+set $rosewater #f4dbd6
+set $flamingo #f0c6c6
+set $pink #f5bde6
+set $mauve #c6a0f6
+set $red #ed8796
+set $maroon #ee99a0
+set $peach #f5a97f
+set $yellow #eed49f
+set $green #a6da95
+set $teal #8bd5ca
+set $sky #91d7e3
+set $sapphire #7dc4e4
+set $blue #8aadf4
+set $lavender #b7bdf8
+set $text #cad3f5
+set $subtext1 #b8c0e0
+set $subtext0 #a5adcb
+set $overlay2 #939ab7
+set $overlay1 #8087a2
+set $overlay0 #6e738d
+set $surface2 #5b6078
+set $surface1 #494d64
+set $surface0 #363a4f
+set $base #24273a
+set $mantle #1e2030
+set $crust #181926
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 exec_always nitrogen --restore
 exec_always ~/.config/polybar/launch.sh
 exec_always picom -b
 
 # window borders
-default_border pixel 1
+default_border pixel 2
 default_floating_border pixel 0
 
 #gaps
-# gaps inner 10px
+gaps inner 10px
 
 #keyboard layout
 exec_always setxkbmap pl
 
 #SCREENSHOT
 bindsym $mod+Print exec "maim -o -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
-
-#nautilus
-bindsym $mod+e exec "alacritty -e ranger"
 
 # floating alerts
 for_window [window_role="alert"] floating enable
@@ -244,8 +267,15 @@ exec_always --no-startup-id autotiling
 # toggle polybar
 bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
 
-# smart gaps
+# smart borders
 hide_edge_borders smart
+
+#smart gaps
+smart_gaps on
 
 # default layout
 workspace_layout default
+
+# dunno if this is needed to be honest. Also in /etc/x11/xorg.conf.d/...
+exec xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
+exec xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1
