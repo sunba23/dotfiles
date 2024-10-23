@@ -28,7 +28,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -53,7 +53,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -91,7 +91,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -102,7 +102,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -189,19 +189,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-#	status_command polybar \
-# 	status_command /usr/bin/bumblebee-status \
-#		-m cpu memory battery time \
-#		pasink pulsein \
-#		-p time.format="%H:%M" \
-#			memory.format="{used}/{available}" \
-#			memory.theme.align=center \
-#			cpu.theme.align=center \
-#		-t gruvbox
-#	position bottom \
-#	i3bar_command i3bar -t
-# }
+bar {
+    status_command i3status
+    height 20
+    font pango:JetBrainsMono Nerd Font 8
+}
 
 set $rosewater #f4dbd6
 set $flamingo #f0c6c6
@@ -238,11 +230,11 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 exec_always nitrogen --restore
-exec_always ~/.config/polybar/launch.sh
+# exec_always ~/.config/polybar/launch.sh
 exec_always picom -b
 
 # window borders
-default_border pixel 2
+default_border pixel 0
 default_floating_border pixel 0
 
 #gaps
@@ -259,19 +251,19 @@ for_window [window_role="alert"] floating enable
 no_focus [window_role="alert"]
 
 # i3 lock
-bindsym $mod+Shift+x exec --no-startup-id i3lock 
+bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
 # autotiling script
 exec_always --no-startup-id autotiling
 
 # toggle polybar
-bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
+# bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
 
 # smart borders
-hide_edge_borders smart
+# hide_edge_borders smart
 
 #smart gaps
-smart_gaps on
+# smart_gaps on
 
 # default layout
 workspace_layout default
