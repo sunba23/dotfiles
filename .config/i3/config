@@ -189,11 +189,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
-    height 20
-    font pango:JetBrainsMono Nerd Font 8
-}
+#bar {
+#    status_command i3status
+#    height 20
+#    font pango:JetBrainsMono Nerd Font 8
+#}
 
 set $rosewater #f4dbd6
 set $flamingo #f0c6c6
@@ -230,7 +230,7 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 exec_always nitrogen --restore
-# exec_always ~/.config/polybar/launch.sh
+exec_always ~/.config/polybar/launch.sh
 exec_always picom -b
 
 # window borders
@@ -238,10 +238,7 @@ default_border pixel 0
 default_floating_border pixel 0
 
 #gaps
-gaps inner 10px
-
-#keyboard layout
-exec_always setxkbmap pl
+#gaps inner 10px
 
 #SCREENSHOT
 bindsym $mod+Print exec "maim -o -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
@@ -253,11 +250,8 @@ no_focus [window_role="alert"]
 # i3 lock
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
-# autotiling script
-exec_always --no-startup-id autotiling
-
 # toggle polybar
-# bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
+bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
 
 # smart borders
 # hide_edge_borders smart
@@ -268,6 +262,3 @@ exec_always --no-startup-id autotiling
 # default layout
 workspace_layout default
 
-# dunno if this is needed to be honest. Also in /etc/x11/xorg.conf.d/...
-exec xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
-exec xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1

@@ -16,8 +16,8 @@ export SERVICES_ROOT="/home/franek/dev/ZPI/services"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,9 +84,9 @@ plugins=(
   tmux
   docker
   ssh
-  vi-mode
-  zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-autosuggestions
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,13 +121,27 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 eval "$(zoxide init zsh)"
-alias ls="eza --long"
+alias ls="eza -x"
+alias lsl="eza --long"
 alias ranger=". ranger"
-setxkbmap -option ctrl:nocaps
 
 # Created by `pipx` on 2024-10-23 09:00:45
 export PATH="$PATH:/home/franek/.local/bin"
-xcape -e 'Control_L=Escape'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
+
+alias fv='fzf --bind "enter:execute(nvim {})"'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+
+alias rr='. ranger'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey -v

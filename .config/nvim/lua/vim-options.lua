@@ -21,13 +21,28 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- when pasting over selected text, keep pasted text in yank
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- visual leader y for yank to system clipboard
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("v", "<leader>y", '"+y')
 -- normal leader Y for yanking whole line to system clipboard
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
 -- quickfix list
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
+
+-- navigate buffers
+vim.keymap.set("n", "<Tab>", function()
+  if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
+    vim.cmd("write")
+  end
+  vim.cmd("bnext")
+end, { silent = true })
+
+vim.keymap.set("n", "<S-Tab>", function()
+  if vim.bo.modifiable and not vim.bo.readonly and vim.bo.modified then
+    vim.cmd("write")
+  end
+  vim.cmd("bprevious")
+end, { silent = true })
