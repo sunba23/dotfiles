@@ -7,7 +7,7 @@ return {
 			local builtin = require("telescope.builtin")
 			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { ".git/" },
+					file_ignore_patterns = { ".git/", '.venv/'},
 					hidden = true,
 					no_ignore = true,
 				},

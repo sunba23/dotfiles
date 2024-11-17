@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono 10
+#font pango:DejaVu Sans Mono 10
+font JetBrainsMono Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -193,49 +194,89 @@ bindsym $mod+r mode "resize"
 #    status_command i3status
 #    height 20
 #    font pango:JetBrainsMono Nerd Font 8
+#    tray_output none
 #}
 
-set $rosewater #f4dbd6
-set $flamingo #f0c6c6
-set $pink #f5bde6
-set $mauve #c6a0f6
-set $red #ed8796
-set $maroon #ee99a0
-set $peach #f5a97f
-set $yellow #eed49f
-set $green #a6da95
-set $teal #8bd5ca
-set $sky #91d7e3
-set $sapphire #7dc4e4
-set $blue #8aadf4
-set $lavender #b7bdf8
-set $text #cad3f5
-set $subtext1 #b8c0e0
-set $subtext0 #a5adcb
-set $overlay2 #939ab7
-set $overlay1 #8087a2
-set $overlay0 #6e738d
-set $surface2 #5b6078
-set $surface1 #494d64
-set $surface0 #363a4f
-set $base #24273a
-set $mantle #1e2030
-set $crust #181926
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $lightgray #bdae93
+
+#set $rosewater #f4dbd6
+#set $flamingo #f0c6c6
+#set $pink #f5bde6
+#set $mauve #c6a0f6
+#set $red #ed8796
+#set $maroon #ee99a0
+#set $peach #f5a97f
+#set $yellow #eed49f
+#set $green #a6da95
+#set $teal #8bd5ca
+#set $sky #91d7e3
+#set $sapphire #7dc4e4
+#set $blue #8aadf4
+#set $lavender #b7bdf8
+#set $text #cad3f5
+#set $subtext1 #b8c0e0
+#set $subtext0 #a5adcb
+#set $overlay2 #939ab7
+#set $overlay1 #8087a2
+#set $overlay0 #6e738d
+#set $surface2 #5b6078
+#set $surface1 #494d64
+#set $surface0 #363a4f
+#set $base #24273a
+#set $mantle #1e2030
+#set $crust #181926
+
+bar {
+    position bottom
+    status_command i3blocks
+    height 20
+    font pango:JetBrainsMono Nerd Font 8
+    tray_output none
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $lightgray
+        # workspaces section            
+        #                    border  backgr. text
+        focused_workspace    $lightgray $lightgray $bg
+        inactive_workspace   $darkgray $darkgray $lightgray
+        active_workspace     $darkgray $darkgray $lightgray
+        urgent_workspace     $red $red $bg
+    }
+}
+
+## target                 title     bg    text   indicator  border
+#client.focused           $lavender $base $text  $rosewater $lavender
+#client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+#client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+#client.urgent            $peach    $base $peach $overlay0  $peach
+#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.background        $base
+
+# class                 border|backgr|text|indicator|child_border
+client.focused          $lightgray $lightgray $bg $purple $darkgray
+client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
+client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
+client.urgent           $red $red $white $red $red
 
 exec_always nitrogen --restore
-exec_always ~/.config/polybar/launch.sh
+#exec_always ~/.config/polybar/launch.sh
 exec_always picom -b
 
 # window borders
-default_border pixel 0
-default_floating_border pixel 0
+#default_border pixel 0
+default_border none
+default_floating_border none
 
 #gaps
 #gaps inner 10px
@@ -251,7 +292,7 @@ no_focus [window_role="alert"]
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
 # toggle polybar
-bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
+#bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
 
 # smart borders
 # hide_edge_borders smart
