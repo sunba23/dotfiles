@@ -253,6 +253,9 @@ bar {
         active_workspace     $darkgray $darkgray $lightgray
         urgent_workspace     $red $red $bg
     }
+    mode hide
+    hidden_state hide
+    modifier none
 }
 
 ## target                 title     bg    text   indicator  border
@@ -279,7 +282,7 @@ default_border none
 default_floating_border none
 
 #gaps
-#gaps inner 10px
+#gaps inner 13px
 
 #SCREENSHOT
 bindsym $mod+Print exec "maim -o -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
@@ -293,6 +296,8 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
 # toggle polybar
 #bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
+# toggle bar
+bindsym $mod+m bar mode toggle
 
 # smart borders
 # hide_edge_borders smart

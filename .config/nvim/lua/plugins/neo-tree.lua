@@ -7,7 +7,7 @@ return {
   },
   config = function()
     -- Key mapping to toggle Neo-tree
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle<CR>", { silent = true })
+    vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { silent = true })
 
     -- Set up Neo-tree with specified options
     require("neo-tree").setup({
@@ -16,18 +16,26 @@ return {
           visible = true,
           show_hidden_count = true,
           hide_dotfiles = false,
-          hide_gitignored = false,
+          hide_gitignored = true,
         },
       },
       window = {
-        width = 35,
+        width = 40,
         position = "left", -- Ensure Neo-tree is opening on the left
         mappings = {
           ["<space>"] = { "toggle_node", nowait = true },
           ["e"] = { "open" },
+          ["<C-b>"] = "next_source",
+        },
+      },
+      source_selector = {
+        winbar = true,
+        sources = {
+          { source = "filesystem", display_name = "   Files " },
+          { source = "buffers", display_name = "   Bufs " },
+          { source = "git_status", display_name = "   Git " },
         },
       },
     })
   end,
 }
-
