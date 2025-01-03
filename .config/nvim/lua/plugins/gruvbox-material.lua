@@ -15,6 +15,11 @@ return {
         set_hl("NeoTreeNormalNC", palette.bg0, palette.none)
         set_hl("NeoTreeEndOfBuffer", palette.bg0, palette.none)
         set_hl('NeoTreeFileName', palette.fg0, palette.none)
+
+        set_hl('NeoTreeDimText', palette.grey1, palette.none)  -- For "hidden files" text
+        set_hl('NeoTreeDotfile', palette.grey1, palette.none)  -- For hidden files
+        set_hl('NeoTreeFileStats', palette.grey1, palette.none)
+        set_hl('NeoTreeMessage', palette.grey2, palette.none)
       end,
     })
     vim.g.gruvbox_material_enable_italic = true

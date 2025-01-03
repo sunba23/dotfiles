@@ -105,6 +105,8 @@ alias lsl="eza --long"
 alias ranger=". ranger"
 alias rr='. ranger'
 alias kc='kubectl'
+alias lg='lazygit'
+alias tf='terraform'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
