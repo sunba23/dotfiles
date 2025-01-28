@@ -20,6 +20,7 @@ return {
         set_hl('NeoTreeDotfile', palette.grey1, palette.none)  -- For hidden files
         set_hl('NeoTreeFileStats', palette.grey1, palette.none)
         set_hl('NeoTreeMessage', palette.grey2, palette.none)
+        set_hl('FloatBorder', palette.grey0, palette.bg0)
       end,
     })
     vim.g.gruvbox_material_enable_italic = true

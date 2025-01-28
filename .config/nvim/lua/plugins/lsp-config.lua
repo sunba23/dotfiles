@@ -35,6 +35,9 @@ return {
 			lspconfig.ast_grep.setup({
         capabilities = capabilities,
       })
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
 
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
