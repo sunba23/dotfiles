@@ -10,7 +10,7 @@ return {
     vim.keymap.set("n", "<leader>m", mark.add_file)
 
     -- Open the `harpoon` menu
-    vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+    vim.keymap.set("n", "<leader>ha", ui.toggle_quick_menu)
 
     -- Navigate to marked files
     vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
