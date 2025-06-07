@@ -235,26 +235,27 @@ bar {
     modifier none
 }
 
-#       Gruvbox Theme   brdr        bg          text    indictr     chld_brdr
-#client.focused          $orange     $orange     $bg     $orange     $orange
-#client.focused_inactive $aqua       $aqua       $bg     $aqua       $aqua
-#client.unfocused        $bg         $bg         $bg     $bg         $bg
-#client.urgent           $red        $red        $bg     $red        $red
-#client.placeholder      $bg         $bg         $bg     $bg         $bg
-#client.background       $bg
+#Gruvbox Theme          brdr        bg          text    indictr     chld_brdr
+client.focused          $orange     $orange     $bg     $orange     $orange
+client.focused_inactive $aqua       $aqua       $bg     $aqua       $aqua
+client.unfocused        $bg         $bg         $bg     $bg         $bg
+client.urgent           $red        $red        $bg     $red        $red
+client.placeholder      $bg         $bg         $bg     $bg         $bg
+client.background       $bg
 
 exec_always nitrogen --restore
-exec_always picom -b
+exec_always picom --window-shader-fg=/home/franek/.config/picom/rounded-borders.glsl -b
 
 # window borders
-default_border pixel 0
-default_floating_border pixel 0
+default_border pixel 3
+default_floating_border pixel 3
 
 # Regular floating toggle
 bindsym $mod+Shift+space floating toggle
 
 #gaps
-#gaps inner 13px
+# gaps outer 13
+gaps inner 13
 
 #SCREENSHOT
 bindsym $mod+Print exec "maim -o -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
@@ -272,13 +273,10 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 bindsym $mod+m bar mode toggle
 
 # smart borders
-hide_edge_borders smart
+# hide_edge_borders smart
 
 #smart gaps
-#smart_gaps on
+smart_gaps off
 
 # default layout
 workspace_layout default
-
-bindsym $mod+Tab focus next
-bindsym $mod+Shift+Tab focus prev
