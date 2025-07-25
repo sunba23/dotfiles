@@ -59,3 +59,6 @@ function ToggleCmdHeight()
     vim.o.cmdheight = 0
   end
 end
+
+vim.opt.fixeol = false
+vim.opt.endofline = false

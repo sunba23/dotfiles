@@ -9,6 +9,7 @@ fi
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$HOME/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -18,7 +19,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,7 +85,6 @@ plugins=(
   tmux
   docker
   ssh
-  zsh-syntax-highlighting
   zsh-autosuggestions
   fzf
 )
@@ -100,6 +99,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+export KUBE_EDITOR=my_fav_edito
 
 eval "$(zoxide init zsh)"
 alias ls="eza -x"
@@ -107,11 +107,9 @@ alias lsl="eza --long"
 alias ranger=". ranger"
 alias rr='. ranger'
 alias kc='kubectl'
+alias k='kubectl'
 alias lg='lazygit'
 alias tf='terraform'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Created by `pipx` on 2024-10-23 09:00:45
 export PATH="$PATH:/home/franek/.local/bin"
@@ -121,10 +119,41 @@ zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
 
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_DEFAULT_OPTS=" \
+--height 15% --layout=reverse --border \
+--color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
+--color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+--color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+--color=selected-bg:#494D64 \
+--color=border:#363A4F,label:#CAD3F5"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # vim mode and fzf ctrl-r dont like each other
 bindkey -v
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Created by `pipx` on 2025-04-03 11:56:02
+export PATH="$PATH:/Users/fsuszko/.local/bin"
+
+export PATH=$PATH:/Users/fsuszko/.spicetify
+
+export XDG_CONFIG_HOME=/Users/fsuszko/.config
+
+export PATH="$(pwd)/cmake-3.24.0-macos-universal/CMake.app/Contents/bin:$PATH"
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+alias kvu="kubectl view-utilization -h"
+alias kns="kubens"
+alias kcx="kubectx"
+
+alias k9s="k9s --readonly"

@@ -1,5 +1,5 @@
 # My dotfiles
-This repository contains dotfiles for my system.
+This repository contains my dotfiles.
 ## Requirements
 ### Git
 ```
