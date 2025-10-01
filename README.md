@@ -1,21 +1,16 @@
-# My dotfiles
-This repository contains my dotfiles.
-## Requirements
-### Git
+# dotfiles
+## requirements
+git and [stow](https://www.gnu.org/software/stow/).
 ```
-apt install git
+brew install git stow
 ```
-### [GNU stow](https://www.gnu.org/software/stow/)
-```
-apt install stow
-```
-## Installation
-Clone the repository using git
+## usage
+clone repo
 ```
 git clone https://github.com/sunba23/dotfiles.git $HOME/dotfiles/
 cd $HOME/dotfiles
 ```
-Use stow to create symlinks
+create symlinks
 ```
 stow .
 ```

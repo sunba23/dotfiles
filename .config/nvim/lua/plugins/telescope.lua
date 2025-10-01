@@ -7,7 +7,7 @@ return {
 			local builtin = require("telescope.builtin")
 			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { ".git/", '.venv/', '*cache*'},
+					file_ignore_patterns = { ".git/", "*venv*", "*cache*" },
 					hidden = true,
 					no_ignore = true,
 				},
@@ -22,6 +22,11 @@ return {
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fl", builtin.lsp_references, {})
+			vim.keymap.set(
+				"n",
+				"<leader>fd",
+				"<cmd>Telescope diagnostics bufnr=0 theme=dropdown prompt_title=diagnostics previewer=false <CR>"
+			)
 		end,
 	},
 	{

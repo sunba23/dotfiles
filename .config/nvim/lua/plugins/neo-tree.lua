@@ -6,11 +6,9 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		-- Key mapping to toggle Neo-tree
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle source=filesystem<CR>", { silent = true })
     vim.keymap.set("n", "<C-b>", ":Neotree toggle source=buffers<CR>", { silent = true })
 
-		-- Set up Neo-tree with specified options
 		require("neo-tree").setup({
 			filesystem = {
 				filtered_items = {
@@ -22,7 +20,7 @@ return {
 			},
 			window = {
 				width = 40,
-				position = "left", -- Ensure Neo-tree is opening on the left
+				position = "left",
 				mappings = {
 					["<space>"] = { "toggle_node", nowait = true },
 					["e"] = { "open" },

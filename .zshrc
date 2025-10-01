@@ -106,10 +106,11 @@ alias ls="eza -x"
 alias lsl="eza --long"
 alias ranger=". ranger"
 alias rr='. ranger'
-alias kc='kubectl'
-alias k='kubectl'
+alias kc='kubecolor'
+alias k='kubecolor'
 alias lg='lazygit'
 alias tf='terraform'
+alias lk='lazykube'
 
 # Created by `pipx` on 2024-10-23 09:00:45
 export PATH="$PATH:/home/franek/.local/bin"
@@ -120,7 +121,7 @@ source <(carapace _carapace)
 zstyle ':completion:*:git:*' group-order 'main commands' 'alias commands' 'external commands'
 
 export FZF_DEFAULT_OPTS=" \
---height 15% --layout=reverse --border \
+--height 20% --layout=reverse --border \
 --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
 --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
 --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
