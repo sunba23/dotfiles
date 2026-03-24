@@ -8,7 +8,9 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export GOPATH=$HOME/go
+export GOPRIVATE=gitlab.cloudferro.com
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH="/Applications/CMake.app/Contents/bin:$PATH"
 export PATH=$HOME/bin:$PATH
 
 # Path to your Oh My Zsh installation.
@@ -102,7 +104,7 @@ fi
 export KUBE_EDITOR=my_fav_edito
 
 eval "$(zoxide init zsh)"
-alias ls="eza -x"
+alias ls="eza -x --icons --sort type"
 alias lsl="eza --long"
 alias ranger=". ranger"
 alias rr='. ranger'
@@ -156,5 +158,20 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias kvu="kubectl view-utilization -h"
 alias kns="kubens"
 alias kcx="kubectx"
+alias n="nvim"
 
 alias k9s="k9s --readonly"
+
+export DAILY="http://rgw-dev.dias.intra.cloudferro.com:15015/daily_shuffle/data-access"
+
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+
+if [[ -f "$HOME/.zshrc.secrets" ]]; then
+  source "$HOME/.zshrc.secrets"
+fi
+
+export PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+
+# asdf version manager
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
