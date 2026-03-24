@@ -3,8 +3,8 @@ notARepository: 'quit'
 gui:
   nerdFontsVersion: "3"
   branchColorPatterns:
-    '^release/': '#e64553' # maroon
-    'DA-\d+': '#7287fd' # lavender
+    '^release': '#e64553' # maroon
+    '(DA|da)-\d+': '#7287fd' # lavender
   tabWidth: 2
   mainPanelSplitMode: vertical
   showRandomTip: false
