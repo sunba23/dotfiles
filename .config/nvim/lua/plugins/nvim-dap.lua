@@ -16,15 +16,15 @@ return {
       map("n", "<leader>lp", function()
         dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end, { desc = "DAP Set Log Point" })
-      map("n", "<leader>dr", dap.repl.open, { desc = "DAP Open REPL" })
-      map("n", "<leader>dl", dap.run_last, { desc = "DAP Run Last" })
+      -- map("n", "<leader>dr", dap.repl.open, { desc = "DAP Open REPL" })
+      -- map("n", "<leader>dl", dap.run_last, { desc = "DAP Run Last" })
     end,
   },
   {
     "leoluz/nvim-dap-go",
     dependencies = { "mfussenegger/nvim-dap" },
     config = function()
-      require("dap-go").setup {
+      require("dap-go").setup({
         dap_configurations = {
           {
             type = "go",
@@ -37,8 +37,8 @@ return {
           path = "dlv",
           args = {},
           build_flags = {},
-        }
-      }
+        },
+      })
     end,
   },
   {
@@ -58,5 +58,5 @@ return {
         dapui.close()
       end
     end,
-  }
+  },
 }

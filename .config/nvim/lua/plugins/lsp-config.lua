@@ -47,6 +47,12 @@ return {
 
 			vim.lsp.config("gopls", {
 				capabilities = capabilities,
+				settings = {
+					gopls = {
+						completeUnimported = true,
+						-- usePlaceholders = true,
+					},
+				},
 			})
 			vim.lsp.enable("gopls")
 
@@ -57,6 +63,9 @@ return {
 
 			vim.lsp.config("jsonnet_ls", {
 				capabilities = capabilities,
+				cmd_env = {
+					JSONNET_PATH = "lib:vendor",
+				},
 				settings = {
 					formatting = {
 						Indent = 2,
@@ -84,7 +93,6 @@ return {
 			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<space>fo", vim.lsp.buf.format, {})
-
 			vim.keymap.set("n", "<space>co", "<cmd>lua vim.diagnostic.setqflist({})<CR>")
 		end,
 	},

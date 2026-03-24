@@ -1,15 +1,23 @@
 return {
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup{
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({
         current_line_blame = true,
-      }
-			vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
-			vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", {})
-		end,
-	},
-	{
-		"tpope/vim-fugitive",
-	},
+        signs = {
+          add          = { text = "▎" },
+          change       = { text = "▎" },
+          delete       = { text = "_" },
+          topdelete    = { text = "‾" },
+          changedelete = { text = "~" },
+          untracked    = { text = "┆" },
+        },
+      })
+      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+      vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", {})
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+  },
 }
